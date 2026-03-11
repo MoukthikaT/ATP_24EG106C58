@@ -1,0 +1,37 @@
+
+
+// Create requests for Product API 
+
+### read all products
+GET http://localhost:4000/product-api/products
+
+### Read a product by id
+GET http://localhost:4000/product-api/products/31234
+
+### Create a new product
+POST http://localhost:4000/product-api/products
+Content-Type: application/json
+
+{
+    "productId":767587,
+    "productName":"Mobile",
+    "price":48500,
+    "brand":"Vivo"
+}
+
+
+
+###
+PUT http://localhost:4000/product-api/products/31234
+Content-Type: application/json
+
+{
+    "productId":31234,
+    "productName":"Laptop",
+    "price":39000,
+    "brand":"Dell"
+}
+
+
+### Delete a product
+DELETE http://localhost:4000/product-api/products/31234
