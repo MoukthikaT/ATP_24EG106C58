@@ -1,15 +1,19 @@
 // Create HTTP Server
+
 import exp from 'express'
 import {connect} from 'mongoose'
 import { userApp } from './APIs/UserAPI.js'
 import { productApp } from './APIs/ProductAPI.js'
 import cookieParser from 'cookie-parser';
+// create express server
 const app=exp()
 
+//Converts incoming JSON → JavaScript object
 // add body parser
 app.use(exp.json())
 
 // add cookie parser middleware
+// Reads cookies from client requests
 app.use(cookieParser())
 
 //forward request to UserApp if path starts with /user-api
