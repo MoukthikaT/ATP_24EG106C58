@@ -1,0 +1,67 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    margin: auto;
+    text-align: center;
+    padding: 60px;
+}
+.parent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:20px;
+}
+
+.cards{
+    width:200px;
+    border: 1px solid black;
+    padding:20px;
+    background-color: bisque;
+    border-radius: 10px;
+}
+img{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    display: block;
+    margin: 20px auto;
+}
+
+h3{
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+p{
+    font-size: 14px;
+}
+
+
+/* em - font size of parent element */
+/* rem - font size of root element */
+
+/*  for font-size ---> use only em,rem */
+/* Can use px/rem,em for sizing and all... */
+
+
+
+.navbar{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: bisque;
+    padding: 10px;
+    text-align: center;
+}
+
+.navbar a{
+    text-decoration: none;
+    color: black;
+    margin: 0 15px;
+    font-size: 16px;
+}
+
