@@ -37,7 +37,7 @@ function ListOfEmps() {
 
   return (
     <div>
-      <h1 className="text-3xl text-center pb-6 font-semibold">
+      <h1 className="text-5xl text-center pb-6 font-semibold">
         List of Employees
       </h1>
 
