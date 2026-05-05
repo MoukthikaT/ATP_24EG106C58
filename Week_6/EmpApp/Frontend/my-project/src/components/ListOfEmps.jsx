@@ -16,7 +16,7 @@ function ListOfEmps() {
   useEffect(() => {
     async function getEmps() {
       try {
-        let res = await fetch("http://emp-backend-583t.onrender.com/emp-api/employees");
+        let res = await fetch("https://emp-backend-583t.onrender.com/emp-api/employees");
 
         let resObj = await res.json();
         console.log("API response:", resObj);
