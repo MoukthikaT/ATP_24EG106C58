@@ -36,18 +36,17 @@ function ListOfEmps() {
   }, []);
 
   return (
-    <div className="px-6 py-10">
-      <h1 className="text-5xl text-center pb-6 font-semibold">
+    <div className="px-6 py-12">
+      <h1 className="text-4xl text-center mb-8 font-semibold">
         List of Employees
       </h1>
 
-      {/* Adjusted grid for better arrangement */}
       <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {emps.length > 0 ? (
           emps.map((empObj) => (
             <div
               key={empObj._id}
-              className="bg-blue-900 p-4 text-center text-lg rounded-xl text-white font-medium shadow-md"
+              className="bg-blue-800 p-4 text-center text-base rounded-xl text-white font-medium shadow-md"
             >
               <p className="truncate">{empObj.email}</p>
               <p className="mb-3">{empObj.name}</p>
