@@ -47,7 +47,7 @@ function ListOfEmps() {
           emps.map((empObj) => (
             <div
               key={empObj._id}
-              className="bg-blue-700 p-4 text-center text-lg rounded-xl text-white font-medium shadow-md"
+              className="bg-blue-900 p-4 text-center text-lg rounded-xl text-white font-medium shadow-md"
             >
               <p className="truncate">{empObj.email}</p>
               <p className="mb-3">{empObj.name}</p>
