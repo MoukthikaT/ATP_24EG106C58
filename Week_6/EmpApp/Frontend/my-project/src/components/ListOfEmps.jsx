@@ -36,7 +36,7 @@ function ListOfEmps() {
   }, []);
 
   return (
-    <div>
+    <div className="px-6 py-10">
       <h1 className="text-5xl text-center pb-6 font-semibold">
         List of Employees
       </h1>
