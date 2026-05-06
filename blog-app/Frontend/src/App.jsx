@@ -10,8 +10,14 @@ import EditArticle from "./components/EditArticle";
 import WriteArticles from "./components/WriteArticles";
 import ArticleByID from "./components/ArticleByID";
 import { Toaster } from "react-hot-toast";
-import Unauthorized from '../src/components/Unauthorized';
+import Unauthorized from "./components/Unauthorized";
 import ProtectedRoute from "./components/ProtectedRoute";
+
+// ✅ Import Admin components
+import AdminProfile from "./components/AdminProfile";
+import UsersList from "./components/UsersList";
+import AuthorList from "./components/AuthorList";
+import AdminArticles from "./components/AdminArticles";
 
 function App() {
   const routerObj = createBrowserRouter([
@@ -19,54 +25,54 @@ function App() {
       path: "/",
       element: <RootLayout />,
       children: [
-        {
-          path: "",
-          element: <Home />,
-        },
-        {
-          path: "register",
-          element: <Register />,
-        },
-        {
-          path: "login",
-          element: <Login />,
-        },
+        { path: "", element: <Home /> },
+        { path: "register", element: <Register /> },
+        { path: "login", element: <Login /> },
+
+        // ✅ User routes
         {
           path: "user-profile",
-          element:( <ProtectedRoute allowedRoles={["USER"]}>
-                      <UserProfile />
-                  </ProtectedRoute>
+          element: (
+            <ProtectedRoute allowedRoles={["USER"]}>
+              <UserProfile />
+            </ProtectedRoute>
           ),
         },
+
+        // ✅ Author routes
         {
           path: "author-profile",
-          element:( <ProtectedRoute allowedRoles={["AUTHOR"]}>
-                      <AuthorProfile />
-                  </ProtectedRoute>
+          element: (
+            <ProtectedRoute allowedRoles={["AUTHOR"]}>
+              <AuthorProfile />
+            </ProtectedRoute>
           ),
           children: [
-            {
-              index: true,
-              element: <AuthorArticles />,
-            },
-            {
-              path: "articles",
-              element: <AuthorArticles />,
-            },
-            {
-              path: "write-article",
-              element: <WriteArticles />,
-            },
+            { index: true, element: <AuthorArticles /> },
+            { path: "articles", element: <AuthorArticles /> },
+            { path: "write-article", element: <WriteArticles /> },
           ],
         },
+
+        // ✅ Admin routes
         {
-          path: "article/:id",
-          element: <ArticleByID />,
+          path: "admin-profile",
+          element: (
+            <ProtectedRoute allowedRoles={["ADMIN"]}>
+              <AdminProfile />
+            </ProtectedRoute>
+          ),
+          children: [
+            { path: "users", element: <UsersList /> },
+            { path: "authors", element: <AuthorList /> },
+            { path: "articles", element: <AdminArticles /> },
+          ],
         },
-        {
-          path: "edit-article",
-          element: <EditArticle />,
-        },
+
+        // ✅ Shared routes
+        { path: "article/:id", element: <ArticleByID /> },
+        { path: "edit-article", element: <EditArticle /> },
+        { path: "unauthorized", element: <Unauthorized /> },
       ],
     },
   ]);

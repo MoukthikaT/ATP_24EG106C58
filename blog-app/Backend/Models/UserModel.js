@@ -29,7 +29,7 @@ const userSchema = new Schema(
     isUserActive:{
         type:Boolean,
         default:true
-    },
+    }
   },
   {
     timestamps: true,

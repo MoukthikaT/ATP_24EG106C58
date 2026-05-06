@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import axios from "axios";
-import {toast} from 'react-hot-toast'
+import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router";
 
 import {
@@ -28,64 +28,53 @@ function WriteArticles() {
     reset,
   } = useForm();
 
-  //save article
   const submitArticle = async (articleObj) => {
     setLoading(true);
-
-    //add authorId to articleObj
     articleObj.author = currentUser._id;
     try {
-      //set loading true
-      setLoading(true);
-      //make POST req to save new article
-      let res = await axios.post("http://localhost:4000/author-api/article", articleObj, { withCredentials: true });
-      //navigate to AuthorArticles
+      let res = await axios.post(
+        "http://localhost:4000/author-api/article",
+        articleObj,
+        { withCredentials: true }
+      );
       if (res.status === 201) {
-        toast.success("Article published successfully")
+        toast.success("Article published successfully!");
         navigate("../articles");
-        // navigate("./author-profile/articles");
+        reset();
       }
     } catch (err) {
-       toast.error(err.response?.data?.error || "Failed to publish article");
+      toast.error(err.response?.data?.error || "Failed to publish article");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className={formCard}>
-      <h2 className={formTitle}>Write New Article</h2>
+    <div className={`${formCard} border border-blue-200 bg-blue-50 shadow-md`}>
+      <h2 className={`${formTitle} text-blue-800`}>Write New Article</h2>
 
       <form onSubmit={handleSubmit(submitArticle)}>
         {/* Title */}
         <div className={formGroup}>
-          <label className={labelClass}>Title</label>
-
+          <label className={`${labelClass} text-blue-700`}>Title</label>
           <input
             type="text"
-            className={inputClass}
+            className={`${inputClass} focus:ring-blue-500`}
             placeholder="Enter article title"
             {...register("title", {
               required: "Title is required",
-              minLength: {
-                value: 5,
-                message: "Title must be at least 5 characters",
-              },
+              minLength: { value: 5, message: "Title must be at least 5 characters" },
             })}
           />
-
           {errors.title && <p className={errorClass}>{errors.title.message}</p>}
         </div>
 
         {/* Category */}
         <div className={formGroup}>
-          <label className={labelClass}>Category</label>
-
+          <label className={`${labelClass} text-blue-700`}>Category</label>
           <select
-            className={inputClass}
-            {...register("category", {
-              required: "Category is required",
-            })}
+            className={`${inputClass} focus:ring-blue-500`}
+            {...register("category", { required: "Category is required" })}
           >
             <option value="">Select category</option>
             <option value="technology">Technology</option>
@@ -93,36 +82,34 @@ function WriteArticles() {
             <option value="ai">AI</option>
             <option value="web-development">Web Development</option>
           </select>
-
           {errors.category && <p className={errorClass}>{errors.category.message}</p>}
         </div>
 
         {/* Content */}
         <div className={formGroup}>
-          <label className={labelClass}>Content</label>
-
+          <label className={`${labelClass} text-blue-700`}>Content</label>
           <textarea
             rows="8"
-            className={inputClass}
+            className={`${inputClass} focus:ring-blue-500`}
             placeholder="Write your article content..."
             {...register("content", {
               required: "Content is required",
-              minLength: {
-                value: 50,
-                message: "Content must be at least 50 characters",
-              },
+              minLength: { value: 50, message: "Content must be at least 50 characters" },
             })}
           />
-
           {errors.content && <p className={errorClass}>{errors.content.message}</p>}
         </div>
 
         {/* Submit */}
-        <button className={submitBtn} type="submit" disabled={loading}>
+        <button
+          className={`${submitBtn} bg-blue-700 text-white hover:bg-blue-800 disabled:bg-blue-400`}
+          type="submit"
+          disabled={loading}
+        >
           {loading ? "Publishing..." : "Publish Article"}
         </button>
 
-        {loading && <p className={loadingClass}>Publishing article...</p>}
+        {loading && <p className={`${loadingClass} text-blue-600`}>Publishing article...</p>}
       </form>
     </div>
   );

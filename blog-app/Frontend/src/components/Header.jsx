@@ -1,22 +1,13 @@
 import { NavLink } from "react-router";
 import { useAuth } from "../store/authStore";
-import {
-  navbarClass,
-  navContainerClass,
-  navBrandClass,
-  navLinksClass,
-  navLinkClass,
-  navLinkActiveClass,
-} from "../styles/common";
 
 function Header() {
   const isAuthenticated = useAuth((state) => state.isAuthenticated);
   const user = useAuth((state) => state.currentUser);
 
-  // decide profile route based on role
+  // Decide profile route based on role
   const getProfilePath = () => {
     if (!user) return "/";
-
     switch (user.role) {
       case "AUTHOR":
         return "/author-profile";
@@ -28,23 +19,27 @@ function Header() {
   };
 
   return (
-    <nav className={navbarClass}>
-      <div className={navContainerClass}>
-
+    <nav className="bg-blue-800 text-white shadow-lg font-sans">
+      <div className="flex justify-between items-center px-6 py-4">
         {/* LOGO */}
-        <NavLink to="/" className={navBrandClass}>
+        <NavLink
+          to="/"
+          className="text-2xl font-bold text-blue-100"
+        >
           MyBlog
         </NavLink>
 
-        <ul className={navLinksClass}>
-
+        {/* NAV LINKS */}
+        <ul className="flex gap-6 text-lg">
           {/* HOME */}
           <li>
             <NavLink
               to="/"
               end
               className={({ isActive }) =>
-                isActive ? navLinkActiveClass : navLinkClass
+                isActive
+                  ? "text-blue-300 font-semibold border-b-2 border-blue-300 pb-1"
+                  : "text-blue-100"
               }
             >
               Home
@@ -58,18 +53,21 @@ function Header() {
                 <NavLink
                   to="/register"
                   className={({ isActive }) =>
-                    isActive ? navLinkActiveClass : navLinkClass
+                    isActive
+                      ? "text-blue-300 font-semibold border-b-2 border-blue-300 pb-1"
+                      : "text-blue-100"
                   }
                 >
                   Register
                 </NavLink>
               </li>
-
               <li>
                 <NavLink
                   to="/login"
                   className={({ isActive }) =>
-                    isActive ? navLinkActiveClass : navLinkClass
+                    isActive
+                      ? "text-blue-300 font-semibold border-b-2 border-blue-300 pb-1"
+                      : "text-blue-100"
                   }
                 >
                   Login
@@ -84,14 +82,15 @@ function Header() {
               <NavLink
                 to={getProfilePath()}
                 className={({ isActive }) =>
-                  isActive ? navLinkActiveClass : navLinkClass
+                  isActive
+                    ? "text-blue-300 font-semibold border-b-2 border-blue-300 pb-1"
+                    : "text-blue-100"
                 }
               >
                 Profile
               </NavLink>
             </li>
           )}
-
         </ul>
       </div>
     </nav>

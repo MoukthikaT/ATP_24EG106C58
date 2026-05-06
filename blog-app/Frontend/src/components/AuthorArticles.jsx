@@ -24,22 +24,20 @@ function AuthorArticles() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  console.log("user in author profile", user);
-
   useEffect(() => {
     if (!user) return;
 
     const getAuthorArticles = async () => {
       try {
         setLoading(true);
-        //read articles of current author
-        let res = await axios.get(" http://localhost:4000/author-api/articles", { withCredentials: true });
+        // read articles of current author
+        let res = await axios.get("http://localhost:4000/author-api/articles", {
+          withCredentials: true,
+        });
         if (res.status === 200) {
           setArticles(res.data.payload);
         }
-        //update articles state
       } catch (err) {
-        console.log(err);
         setError(err.response?.data?.error || "Failed to fetch articles");
       } finally {
         setLoading(false);
@@ -66,7 +64,11 @@ function AuthorArticles() {
   if (error) return <p className={errorClass}>{error}</p>;
 
   if (articles.length === 0) {
-    return <div className={emptyStateClass}>You haven't published any articles yet.</div>;
+    return (
+      <div className={emptyStateClass}>
+        You haven't published any articles yet.
+      </div>
+    );
   }
 
   return (
@@ -80,10 +82,8 @@ function AuthorArticles() {
 
           <div className="flex flex-col gap-2">
             <p className={articleMeta}>{article.category}</p>
-
             <p className={articleTitle}>{article.title}</p>
-
-            <p className={articleExcerpt}>{article.content.slice(0, 60)}...</p>
+            <p className={articleExcerpt}>{article.content?.slice(0, 60) || ""}...</p>
           </div>
 
           <button className={`${ghostBtn} mt-auto pt-4`} onClick={() => openArticle(article)}>
