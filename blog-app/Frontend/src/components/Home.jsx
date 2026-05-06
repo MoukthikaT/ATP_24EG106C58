@@ -6,7 +6,7 @@ function Home() {
     <div className="flex flex-col justify-center items-center w-full text-center px-4">
       
       <h1 className="text-5xl font-bold text-blue-700 mb-6">
-        Welcome to MyBlog
+        Welcome to Knowledge Nest
       </h1>
 
       <p className="text-lg text-blue-600 mb-8 max-w-2xl">

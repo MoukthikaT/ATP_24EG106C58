@@ -26,7 +26,7 @@ function Header() {
           to="/"
           className="text-2xl font-bold text-blue-100"
         >
-          MyBlog
+          Knowledge Nest
         </NavLink>
 
         {/* NAV LINKS */}
