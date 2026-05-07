@@ -1,6 +1,6 @@
 import exp from "express";
-import { UserModel } from "../Models/UserModel.js";
-import { ArticleModel } from "../Models/ArticleModel.js";
+import { UserModel } from "../models/UserModel.js";
+import { ArticleModel } from "../models/ArticleModel.js";
 import { verifyToken } from "../middlewares/VerifyToken.js";
 
 export const adminApp = exp.Router();
