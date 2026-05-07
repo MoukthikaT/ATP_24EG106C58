@@ -11,7 +11,7 @@ function AuthorList() {
     const getAuthors = async () => {
       setLoading(true);
       try {
-        let res = await axios.get("http://localhost:4000/admin-api/authors", {
+        let res = await axios.get("https://blogapp-backend-knhz.onrender.com/admin-api/authors", {
           withCredentials: true,
         });
         setAuthors(res.data.payload);
@@ -27,7 +27,7 @@ function AuthorList() {
   const deleteAuthor = async (id) => {
     if (!window.confirm("Are you sure you want to delete this author?")) return;
     try {
-      await axios.delete(`http://localhost:4000/admin-api/users/${id}`, {
+      await axios.delete(`https://blogapp-backend-knhz.onrender.com/admin-api/users/${id}`, {
         withCredentials: true,
       });
       setAuthors(authors.filter((a) => a._id !== id));

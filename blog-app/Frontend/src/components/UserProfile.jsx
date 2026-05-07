@@ -26,7 +26,7 @@ function UserProfile() {
     const getArticles = async () => {
       setLoading(true);
       try {
-        let res = await axios.get("http://localhost:4000/user-api/articles", {
+        let res = await axios.get("https://blogapp-backend-knhz.onrender.com/user-api/articles", {
           withCredentials: true,
         });
         if (res.status === 200) {

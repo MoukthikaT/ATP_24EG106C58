@@ -15,7 +15,7 @@ function AdminArticles() {
     const getArticles = async () => {
       setLoading(true);
       try {
-        let res = await axios.get("http://localhost:4000/admin-api/articles", {
+        let res = await axios.get("https://blogapp-backend-knhz.onrender.com/admin-api/articles", {
           withCredentials: true,
         });
         setArticles(res.data.payload);
@@ -32,7 +32,7 @@ function AdminArticles() {
   const toggleArticleStatus = async (id, currentStatus) => {
     try {
       await axios.patch(
-        `http://localhost:4000/admin-api/articles/${id}`,
+        `https://blogapp-backend-knhz.onrender.com/admin-api/articles/${id}`,
         { isArticleActive: !currentStatus },
         { withCredentials: true }
       );

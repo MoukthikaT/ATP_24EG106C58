@@ -40,7 +40,7 @@ function EditArticle() {
     modifiedArticle.articleId = article._id;
     try {
       let res = await axios.put(
-        "http://localhost:4000/author-api/articles",
+        "https://blogapp-backend-knhz.onrender.com/author-api/articles",
         modifiedArticle,
         { withCredentials: true }
       );

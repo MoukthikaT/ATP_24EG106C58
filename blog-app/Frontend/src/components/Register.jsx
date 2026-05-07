@@ -41,7 +41,7 @@ function Register() {
 
     try {
       setLoading(true);
-      let res = await axios.post("http://localhost:4000/auth/users", formData, {
+      let res = await axios.post("https://blogapp-backend-knhz.onrender.com/auth/users", formData, {
         withCredentials: true,
         headers: { "Content-Type": "multipart/form-data" },
       });

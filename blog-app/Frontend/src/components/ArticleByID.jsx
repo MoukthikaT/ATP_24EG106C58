@@ -48,7 +48,7 @@ function ArticleByID() {
       setLoading(true);
       try {
         const res = await axios.get(
-          `http://localhost:4000/user-api/article/${id}`,
+          `https://blogapp-backend-knhz.onrender.com/user-api/article/${id}`,
           { withCredentials: true }
         );
         setArticle(res.data.payload);
@@ -78,7 +78,7 @@ function ArticleByID() {
 
     try {
       const res = await axios.patch(
-        "http://localhost:4000/author-api/articles",
+        "https://blogapp-backend-knhz.onrender.com/author-api/articles",
         { articleId: article._id, isArticleActive: newStatus },
         { withCredentials: true }
       );
@@ -99,7 +99,7 @@ function ArticleByID() {
   const addComment = async (commentObj) => {
     commentObj.articleId = article._id;
     let res = await axios.put(
-      "http://localhost:4000/user-api/articles",
+      "https://blogapp-backend-knhz.onrender.com/user-api/articles",
       commentObj,
       { withCredentials: true }
     );

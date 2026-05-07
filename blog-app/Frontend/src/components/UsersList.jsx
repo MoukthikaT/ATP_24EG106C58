@@ -11,7 +11,7 @@ function UsersList() {
     const getUsers = async () => {
       setLoading(true);
       try {
-        let res = await axios.get("http://localhost:4000/admin-api/users", {
+        let res = await axios.get("https://blogapp-backend-knhz.onrender.com/admin-api/users", {
           withCredentials: true,
         });
         setUsers(res.data.payload);
@@ -27,7 +27,7 @@ function UsersList() {
   const deleteUser = async (id) => {
     if (!window.confirm("Are you sure you want to delete this user?")) return;
     try {
-      await axios.delete(`http://localhost:4000/admin-api/users/${id}`, {
+      await axios.delete(`https://blogapp-backend-knhz.onrender.com/admin-api/users/${id}`, {
         withCredentials: true,
       });
       setUsers(users.filter((u) => u._id !== id));
