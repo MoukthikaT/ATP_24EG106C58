@@ -1,6 +1,6 @@
 import exp from "express";
 import { verifyToken } from "../middlewares/VerifyToken.js";
-import { ArticleModel } from "../models/ArticleModel.js";
+import { ArticleModel } from "../Models/ArticleModel.js";
 export const userApp = exp.Router();
 
 //Read articles of all authors
@@ -14,10 +14,10 @@ userApp.get("/articles", verifyToken("USER"), async (req, res) => {
 //Add comment to an article
 userApp.put("/articles", verifyToken("USER"), async (req, res) => {
   //get body from req
-  const { articleId, comment } = req.body;
+  const { articleId,comment } = req.body;
   //check article
   const articleDocument = await ArticleModel
-                          .findOne({ _id: articleId, isArticleActive: true })
+                          .findOne({ _id:articleId, isArticleActive:true })
                            .populate("comments.user");
 
   console.log(articleDocument);
