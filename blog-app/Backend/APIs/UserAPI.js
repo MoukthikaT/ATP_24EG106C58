@@ -8,16 +8,16 @@ userApp.get("/articles", verifyToken("USER"), async (req, res) => {
   //read artcles
   const articlesList = await ArticleModel.find({ isArticleActive: true });
   //send res
-  res.status(200).json({ message: "artciles", payload: articlesList });
+  res.status(200).json({ message: "articles", payload: articlesList });
 });
 
 //Add comment to an article
 userApp.put("/articles", verifyToken("USER"), async (req, res) => {
   //get body from req
-  const { articleId,comment } = req.body;
+  const { articleId, comment } = req.body;
   //check article
   const articleDocument = await ArticleModel
-                          .findOne({ _id:articleId, isArticleActive:true })
+                          .findOne({ _id: articleId, isArticleActive: true })
                            .populate("comments.user");
 
   console.log(articleDocument);
