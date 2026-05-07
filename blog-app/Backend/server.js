@@ -19,12 +19,12 @@ const app = express();
 // CORS Configuration
 app.use(
   cors({
-  origin: [
-    "http://localhost:5173",
-    "https://your-frontend-url.vercel.app"
-  ],
-  credentials: true,
-})
+    origin: [
+      "http://localhost:5173",
+      "https://blog-app-ten-tawny.vercel.app"
+    ],
+    credentials: true,
+  })
 );
 
 // Middleware
