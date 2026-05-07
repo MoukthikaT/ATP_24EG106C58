@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
-// Import your route modules
+// Import route modules
 import { userApp } from "./APIs/UserAPI.js";
 import { authorApp } from "./APIs/AuthorAPI.js";
 import { adminApp } from "./APIs/AdminAPI.js";
@@ -16,13 +16,10 @@ config();
 // Create express app
 const app = express();
 
-// 🔐 CORS Configuration (IMPORTANT)
+// CORS Configuration
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173", // local frontend
-      "https://your-frontend-url.vercel.app", // deployed frontend (change later)
-    ],
+    origin: true,
     credentials: true,
   })
 );
@@ -37,10 +34,11 @@ app.use("/author-api", authorApp);
 app.use("/admin-api", adminApp);
 app.use("/auth", commonApp);
 
-// ------------------- DB CONNECTION -------------------
+// Database Connection
 const connectDB = async () => {
   try {
     await mongoose.connect(process.env.DB_URL);
+
     console.log("DB connected");
 
     const PORT = process.env.PORT || 5000;
@@ -55,14 +53,14 @@ const connectDB = async () => {
 
 connectDB();
 
-// ------------------- INVALID ROUTE -------------------
+// Invalid Route Handler
 app.use((req, res) => {
   res.status(404).json({
     message: `Path ${req.url} is invalid`,
   });
 });
 
-// ------------------- ERROR HANDLER -------------------
+// Global Error Handler
 app.use((err, req, res, next) => {
   console.log("Error:", err);
 
@@ -74,7 +72,7 @@ app.use((err, req, res, next) => {
     });
   }
 
-  // Cast Error
+  // Invalid MongoDB ObjectId
   if (err.name === "CastError") {
     return res.status(400).json({
       message: "Invalid ID format",
@@ -82,7 +80,7 @@ app.use((err, req, res, next) => {
     });
   }
 
-  // Duplicate Key Error (MongoDB)
+  // Duplicate Key Error
   if (err.code === 11000) {
     const field = Object.keys(err.keyValue)[0];
     const value = err.keyValue[field];
@@ -93,7 +91,7 @@ app.use((err, req, res, next) => {
     });
   }
 
-  // Default server error
+  // Default Server Error
   res.status(500).json({
     message: "Server error",
     error: "Something went wrong",

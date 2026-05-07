@@ -1,21 +1,16 @@
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-
 node_modules/
+blog-app/**/node_modules/
+
+.env
+.env.*
 
 dist/
 dist-ssr/
 build/
 coverage/
 
-.env
-.env.*
-!.env.example
+*.log
+logs
 
 *.local
 
