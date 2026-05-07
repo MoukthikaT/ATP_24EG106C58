@@ -14,9 +14,6 @@ function Footer() {
           <div>
             <h2 className="text-lg font-bold mb-3">MyBlog</h2>
             <p>© {new Date().getFullYear()} MyBlog. All rights reserved.</p>
-            <p className="text-blue-300 mt-2">
-              Crafted with 💙 using React & Tailwind
-            </p>
           </div>
 
           {/* Careers & Certifications */}
