@@ -1,0 +1,61 @@
+GET http://localhost:3000/users
+
+### Read a user by id
+GET http://localhost:3000/users/1
+
+###
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "id":1,
+    "name":"Priya",
+    "age":32
+}
+
+###
+PUT http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "id":1,
+    "name":"Dev",
+    "age":24
+}
+
+
+###
+DELETE http://localhost:3000/users/1
+
+### ---------------------------------------------------------------------------------
+### Products
+
+GET http://localhost:3000/products
+
+### Read a user by id
+GET http://localhost:3000/products/Nike
+
+###
+POST http://localhost:3000/products
+Content-Type: application/json
+
+{
+    "productId":2,
+    "name":"Shoes",
+    "brand":"Nike",
+    "price":6000
+}
+
+###
+PUT http://localhost:3000/products
+Content-Type: application/json
+
+{
+    "productId":1,
+    "name":"Shirt",
+    "brand":"Polo",
+    "price":2000
+}
+
+###
+DELETE http://localhost:3000/products/1

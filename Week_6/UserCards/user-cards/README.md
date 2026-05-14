@@ -1,16 +1,19 @@
-# React + Vite
+1. Generate package .json
+        npm init -y
+2. create express server
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+3. Install mongoose and connect to MongoDB
+        REST API- MongoDB native driver--> DB Server
+        REST API- Mongoose ODM tool--> DB Server 
+        object document mapping- odm
 
-Currently, two official plugins are available:
+4. Build USER REST API 
+        - Create User
+        - Read All Users
+        - Read a User by ID
+        - Update a User by ID
+        - Delete a User by ID
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+5. Create Schema and Model of the Resource(User)
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+6. Create USER API and define the Routes

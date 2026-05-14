@@ -1,16 +1,42 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+FETCH & AXIOS
 
-Currently, two official plugins are available:
+GET
+PUT request using fetch
+    fetch(endpoint,{
+        method:"POST",
+        headers:{"Content-Type":application/json},
+        body:JSON.stringify(resource)
+    })
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## React Compiler
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+AXIOS:
+POST request using Axios
+    axios.post(endpoint,resource)
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+
+# State Management
+    sharing state + keeping state sync across the application
+
+    BY using:
+    - Context API - small apps
+    - Redux / Zustand - Large apps
+
+
+# Context API
+    - Create context object(pipeline)
+    - Add state to context obj(add water to pipeline)
+    - set this context provider to a parent
+    - Consume Context from components
+
+
+# Issues with Context
+- Context with useState hook is a best and simple state management mechanism for small applications.
+    But it creates unnecessary re-rendering issues when multiple state is part of a context.
+- To overcome this unnecessary re-rendering issue, create multiple contexts and make sure each
+    context have a single state.      
+- When the application size is huge, then maintanence of multiple contexts will become an issue.
+    For such large applications, advanced state management tools like redux / zustand can be used.
